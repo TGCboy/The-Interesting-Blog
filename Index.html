@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Interesting Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    background-color: #004d4d; /* Darker teal */
+    padding: 10px 20px;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 128, 128, 0.7);
+  }
+  header svg {
+    height: 50px;
+    margin-right: 15px;
+    filter: drop-shadow(0 0 2px #00b3b3);
+  }
+  header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  nav {
+    margin-left: auto;
+  }
+  nav a {
+    color: #80cbc4;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #b2dfdb;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  main.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .post {
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 128, 128, 0.5);
+  }
+  h2 {
+    color: #00b3b3;
+  }
+  /* Calendar */
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 128, 128, 0.5);
+  }
+  .day {
+    padding: 15px;
+    text-align: center;
+    background: #004d4d;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #a7ffeb;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+  }
+  .day:hover {
+    background: #007777;
+    color: #ffffff;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!-- Inline SVG logo -->
+  <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Grid lines -->
+    <g stroke="#00b3b3" stroke-width="1">
+      <line x1="10" y1="90" x2="90" y2="90"/>
+      <line x1="10" y1="70" x2="90" y2="70"/>
+      <line x1="10" y1="50" x2="90" y2="50"/>
+      <line x1="10" y1="30" x2="90" y2="30"/>
+      <line x1="10" y1="10" x2="90" y2="10"/>
+      <line x1="10" y1="10" x2="10" y2="90"/>
+      <line x1="30" y1="10" x2="30" y2="90"/>
+      <line x1="50" y1="10" x2="50" y2="90"/>
+      <line x1="70" y1="10" x2="70" y2="90"/>
+      <line x1="90" y1="10" x2="90" y2="90"/>
+    </g>
+    <!-- 3D curve (white line) -->
+    <polyline points="10,80 30,60 50,40 70,30 90,35" fill="none" stroke="#ffffff" stroke-width="2"/>
+  </svg>
+  <h1>The Interesting Blog</h1>
+  <nav>
+    <a href="#" onclick="switchPage('home')">Home</a>
+    <a href="#" onclick="switchPage('archive')">Archive</a>
+  </nav>
+</header>
+
+<main id="home" class="active">
+  <div class="post">
+    <h2>Weber's Law</h2>
+    <p>Imagine I told you to I was going to give you £20, but I actually gave you £5 - you'd be pretty annoyed right? Now imagine I told you I was going to give you £1015 and I gave you £1000. You'd barely notice, wouldn't you? Interestingly here the difference in money is £15 both times yet, one scenario leaves you significanly more grumpy than the other. Well believe it or not there is a good reason for this and we called it Weber's Law. </p>
+    <iframe src="log_graph_scaled_thinlines.html" style="width:100%; height:500px; border:none;"></iframe>
+
+
+
+
+
+
+  </div>
+</main>
+
+<main id="archive" style="display:none;">
+  <h2>Archive</h2>
+  <div class="calendar">
+    <div class="day">1</div>
+    <div class="day">2</div>
+    <div class="day">3</div>
+    <div class="day">4</div>
+    <div class="day">5</div>
+    <div class="day">6</div>
+    <div class="day">7</div>
+    <div class="day">8</div>
+    <div class="day">9</div>
+    <div class="day">10</div>
+    <div class="day">11</div>
+    <div class="day">12</div>
+    <div class="day">13</div>
+    <div class="day">14</div>
+  </div>
+</main>
+
+<script>
+
+function switchPage(page) {
+  const sections = document.querySelectorAll('main');
+  sections.forEach(sec => {
+    sec.classList.remove('active');
+    setTimeout(() => sec.style.display = 'none', 500);
+  });
+  const newPage = document.getElementById(page);
+  setTimeout(() => {
+    newPage.style.display = 'block';
+    setTimeout(() => newPage.classList.add('active'), 50);
+  }, 500);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
